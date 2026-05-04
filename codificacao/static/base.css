@@ -1,0 +1,25 @@
+*{
+    font-family: century gothic;
+    margin-left: 20px;
+}
+
+#dvLogo{
+    border: 1px solid black;
+    overflow: auto;
+    margin-top: 10px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#dvLogo img{
+    border: 1px solid black;
+    width: 60px;
+    height: auto;
+    float: left;
+}
+#dvLogo h3{
+    border: 1px solid black;
+    float: left;
+}
