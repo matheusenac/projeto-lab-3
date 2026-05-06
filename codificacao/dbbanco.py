@@ -1,11 +1,4 @@
-from conexao import conexao
-class produtoCarrinho:
-    def __init__(self, idProduto = None, nomeProduto = None, descricaoProduto = None, precoProduto = None, estoqueProduto = None):
-        self.idProduto = idProduto
-        self.nomeProduto = nomeProduto
-        self.descricaoProduto = descricaoProduto
-        self.precoProduto = precoProduto
-        self.estoqueProduto = estoqueProduto
+from conexao import mysql
 
 # CREATE
 def Create(self):
@@ -14,18 +7,17 @@ def Create(self):
 
 # READ FETCHALL
 def readFetchall():
-    conex = conexao()
-    cursor = conex.cursor()
-    cursor.execute("select * from produto")
+    cursor = mysql.connection.cursor()
+    cursor.execute("select * from produtos")
     resultado = cursor.fetchall()
-    conex.close()
+    mysql.connection.commit()
+    cursor.close()
     return resultado
 
 # READ FETCHONE
 def readFetchone():
-    conex = conexao()
     cursor = conex.cursor()
-    cursor.execute("select * from produto")
+    cursor.execute("select * from produtos")
     resultado = cursor.fetchone()
     conex.close()
     return resultado
@@ -34,7 +26,7 @@ def readFetchone():
 def Update(self, idProduto):
     conex = conexao()
     cursor = conex.cursor()
-    sql = ("update produto set estoqueProduto where idProduto = ", idProduto)
+    sql = ("update produtos set estoque_Produto where id_produto = ", idProduto)
     cursor.execute(sql)
     conex.commit()
     conex.close()

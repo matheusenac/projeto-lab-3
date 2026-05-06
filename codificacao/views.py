@@ -1,13 +1,18 @@
-from flask import render_template, request, redirect,  session, flash, url_for
+from flask import render_template
 from main import app
+from dbbanco import *
+
+#dbEcommerce = dbEcommerce()
 
 @app.route('/login')
 def login():
     return render_template('login.html')
 
-@app.route('/produtos')
+@app.route('/produtos', methods=["GET","POST"])
 def produtos():
-    return render_template('produtos.html')
+    produtos = readFetchall()
+    print(produtos)
+    return render_template('produtos.html', produtos=produtos)
 
 @app.route('/carrinho')
 def carrinho():

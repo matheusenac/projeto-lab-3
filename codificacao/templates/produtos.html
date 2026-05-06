@@ -1,4 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
     <h2>Produtos</h2>
+    {% for produto in produtos %}
+    <div>
+        <img src="{{produto[4]}}" alt="">
+        <p>{{produto[1]}}</p>
+        <p>{{produto[3]}}</p>
+        <input type="button" value="Adicionar ao Carrinho">
+    </div>
+    {% endfor %}
 {% endblock %}

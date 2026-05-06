@@ -1,22 +1,10 @@
-import mysql.connector
-from mysql.connector import Error
+from flask_mysqldb import MySQL
+from main import app
 
-def conexao():
-    try:
-        conex = mysql.connector.connect(
-        host = "localhost",
-        database = "dbloja",
-        user = "root",
-        password = "senac"
-    )
+# Database Configuration
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = '070771'
+app.config['MYSQL_DB'] = 'ecommerce'
 
-        if conex.is_connected():
-            cursor = conex.cursor()
-
-    except Error:
-        print(Error)
-
-    finally:
-        if conex.is_connected():
-            cursor.close()
-            conex.close()
+mysql = MySQL(app)
