@@ -4,8 +4,8 @@
         {% for produto in produtos %}
         <div class="card-produto">
             <img src="{{produto[4]}}" alt="{{produto[1]}}">
-            <p class="nome">{{produto[1]}}</p>
-            <p class="preco">R$ {{produto[3]}}</p>
+            <span class="nome">{{produto[1]}}</span>
+            <span class="preco">R$ {{produto[3]}}</span>
             <input type="submit" value="Adicionar ao Carrinho" onclick="location.href='carrinho/{{ produto[0] }}'">
         </div>
         {% endfor %}

@@ -1,48 +1,26 @@
-/* Container pai: define a malha de 4 colunas */
 .container-produtos {
     display: grid;
-    /* Divide o espaço em 4 colunas iguais */
-    grid-template-columns: repeat(4, 1fr); 
-    /* Espaçamento entre os cards */
-    gap: 20px; 
-    padding: 20px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    width: 80%;
+    margin: 15% auto;
 }
 
-/* Estilização básica do card para visualização */
 .card-produto {
-    border: 1px solid #ddd;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza o conteúdo horizontalmente */
-    text-align: center;
+    display: grid;
+    grid-template-rows: 2fr 1fr 1fr;
+    border: 1px solid;
 }
 
-.card-produto img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
+.card-produto img{
+    width: 250px;
+    height: 250px;
+    border: 1px solid;
 }
 
-.card-produto .nome {
-    font-weight: bold;
-    margin: 5px 0;
-}
-
-.card-produto .preco {
-    color: #2ecc71;
-    margin-bottom: 15px;
-}
-
-/* Responsividade: para o layout não quebrar em telas pequenas */
-@media (max-width: 900px) {
-    .container-produtos {
-        grid-template-columns: repeat(2, 1fr); /* 2 por linha no tablet */
-    }
-}
-
-@media (max-width: 600px) {
-    .container-produtos {
-        grid-template-columns: 1fr; /* 1 por linha no celular */
-    }
+.card-produto input{
+    align-items: end;
+    width: 200px;
+    height: 40px;
+    margin: auto;
 }
