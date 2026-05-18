@@ -55,3 +55,21 @@ def Delete(self, idProduto):
     cursor.execute(sql)
     conex.commit()
     conex.close()
+
+# UPDATE ITEM_CARRINHO
+def UpdateCarrinho(self, fk_produto):
+    conex = conexao()
+    cursor = conex.cursor()
+    sql = ("update produtos set item_carrinho where id_produto = ", fk_produto,)
+    cursor.execute(sql)
+    conex.commit()
+    conex.close()
+
+# DELETE ITEM_CARRINHO
+def DeleteCarrinho(self, fk_produto):
+    conex = conexao()
+    cursor = conex.cursor()
+    sql = ("delete from item_carrinho where id = ", fk_produto,)
+    cursor.execute(sql)
+    conex.commit()
+    conex.close()
