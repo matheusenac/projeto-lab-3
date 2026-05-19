@@ -21,6 +21,20 @@ def addProdCarrinho(idProduto, idCarrinho):
     mysql.connection.commit()
     cursor.close()
 
+# BUSCA PARA A EXIBIR OS ITENS NO CARRINHO 
+def buscarProdutosNoCarrinho(idCarrinho):
+    cursor = mysql.connection.cursor()
+    sql = ("""
+           select p.nome_produto, p.preco_produto, p.img_produto
+           from produtos p 
+           inner join item_carrinho i on p.id_produto = i.fk_produto
+           where i.fk_carrinho = %s
+           """)
+    cursor.execute(sql,(idCarrinho,))
+    resposta = cursor.fetchall()
+    cursor.close()
+    return resposta
+
 # READ PRODUTOS FETCHALL
 def readProdutos():
     cursor = mysql.connection.cursor()
