@@ -29,3 +29,5 @@ def carrinho():
 @app.route("/delete/<int:idProduto>")
 def deletarCarrinho(idProduto):
     id = readItemCarrinho()[0]
+    deleteItemCarrinho(idProduto)
+    return redirect("/carrinho")
