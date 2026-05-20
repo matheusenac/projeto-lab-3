@@ -16,13 +16,16 @@ def adicionarAoCarrinho(idProduto):
     print(idCarrinho)
     print(idProduto)
     addProdCarrinho(idProduto, idCarrinho)
-    return redirect(url_for('exibirCarrinho'))    
+    return redirect(url_for('carrinho'))    
     #TIVE QUE IMPORTAR ISSO PRA FUNCIONAR, AGR TÁ REDIRECIONANDO PRA ROTA DA DEF 
 
 #FAZER PASSAR O ID AQUI DPS - VITIN
 @app.route('/carrinho')
-def exibirCarrinho():
+def carrinho():
     id = readCarrinho()[0]
     listaItem = buscarProdutosNoCarrinho(id)
     return render_template('carrinho.html', itens = listaItem)
     
+@app.route("/delete/<int:idProduto>")
+def deletarCarrinho(idProduto):
+    id = readItemCarrinho()[0]

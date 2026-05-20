@@ -46,44 +46,52 @@ def readProdutos():
 
 # READ FETCHONE
 def readFetchone():
-    cursor = conex.cursor()
+    cursor = mysql.connection.cursor()
     cursor.execute("select * from produtos")
     resultado = cursor.fetchone()
-    conex.close()
+    cursor.close()
+    return resultado
+
+# READ PRODUTO CARRINHO
+def readItemCarrinho():
+    cursor = mysql.connection.cursor()
+    cursor.execute("select fk_produto from item_carrinho")
+    resultado = cursor.fetchone()
+    cursor.close()
     return resultado
 
 # UPDATE
 def Update(self, idProduto):
-    conex = conexao()
+    cursor = mysql.connection.cursor()
     cursor = conex.cursor()
     sql = ("update produtos set estoque_Produto where id_produto = ", idProduto,)
     cursor.execute(sql)
     conex.commit()
-    conex.close()
+    cursor.close()
 
 # DELETE
 def Delete(self, idProduto):
-    conex = conexao()
+    cursor = mysql.connection.cursor()
     cursor = conex.cursor()
     sql = ("delete from produtos where id = ", idProduto,)
     cursor.execute(sql)
     conex.commit()
-    conex.close()
+    cursor.close()
 
 # UPDATE ITEM_CARRINHO
 def UpdateCarrinho(self, fk_produto):
-    conex = conexao()
+    cursor = mysql.connection.cursor()
     cursor = conex.cursor()
     sql = ("update produtos set item_carrinho where id_produto = ", fk_produto,)
     cursor.execute(sql)
     conex.commit()
-    conex.close()
+    cursor.close()
 
 # DELETE ITEM_CARRINHO
 def DeleteCarrinho(self, fk_produto):
-    conex = conexao()
+    cursor = mysql.connection.cursor()
     cursor = conex.cursor()
     sql = ("delete from item_carrinho where id = ", fk_produto,)
     cursor.execute(sql)
     conex.commit()
-    conex.close()
+    cursor.close()
