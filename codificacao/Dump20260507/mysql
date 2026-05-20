@@ -28,9 +28,9 @@ insert into produtos(nome_produto, qtd_estoque, preco_produto, img_produto)
 values 
 ("Console Sony Playstation 5 Slim Disk 1TB DualSense", 43, 4150.00, "static/uploads/Console Playstation 5 Slim.jpeg"),
 ("Camisa Adidas Cruzeiro EC 2025/26 S/N Tamanho", 130, 399.00, "static/uploads/Camisa Cruzeiro.jpeg"),
-("METEORA (20TH ANNIVERSARY EDITION/4LP BOX SET)", 10, 648.00, "static/uploads/Colecao Meteora.jpeg"),
+("METEORA (20TH ANNIVERSARY EDITION/4LP BOX SET)", 10, 648.00, "static/uploads/Colecao Meteora.jpg"),
 ("Cuica Haberman Severo 6'' Em Aluminio Com Pintura", 92, 236.00, "static/uploads/Cuica Haberman.png"),
 ("Kit Gol G8 Spoiler Diantiero + Traseiro + Saia Lateral - Sem Pintar", 5, 2699.97, "static/uploads/Gol Vermelho.png"),
 ("Action Figure Luiz Espalha Lixo ", 100, 340.00, "static/uploads/Luiz Espalha Lixo.png");
 
-select * from produtos
+select * from produtos;
