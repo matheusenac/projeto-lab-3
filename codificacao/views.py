@@ -1,6 +1,6 @@
-from flask import render_template, redirect, url_for
+from flask import render_template, redirect
 from main import app
-from dbbanco import *
+from codificacao.dbquery import *
 
 # ROTA PRODUTOS ###################################
 @app.route('/')
