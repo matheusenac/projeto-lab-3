@@ -3,22 +3,22 @@
 }
 
 #dvLogo{
-    border: 1px solid black;
     overflow: auto;
-    margin-top: 10px;
+    padding-top: 20px;
+    padding-left: 20px;
     margin: auto;
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
 }
 
 #dvLogo img{
-    border: 1px solid black;
     width: 60px;
     height: auto;
     float: left;
 }
-#dvLogo h3{
-    border: 1px solid black;
+#dvLogo p{
+    margin-left: 10px;
     float: left;
+    font-weight: bolder;
 }
