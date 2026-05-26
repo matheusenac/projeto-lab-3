@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
-
 {% block content %}
+<script>
+    function atualizarValor(){
+        let numero = document.getElementsByName("numero")
+        return numero.value
+    }
+</script>
+
 <div class="container-carrinho" style="width: 100%; max-width: 1200px; margin: 0 auto; padding: 20px; box-sizing: border-box;">
     <h1 style="text-align: center; margin-top: 20px; margin-bottom: 30px;">Seu Carrinho</h1>
 
@@ -13,15 +19,16 @@
                     <img src="{{ item[3] }}" alt="{{ item[1] }}" style="width: 80px; height: 80px; object-fit: cover; border-radius: 5px;">
                     <div>
                         <p class="nome" style="font-weight: bold; margin: 0; font-size: 1.2em;">{{ item[1] }}</p>
-                        <p class="preco" style="color: #28a745; font-weight: bold; margin: 5px 0 0 0; font-size: 1.1em;">R$ {{ item[2]*item[4] }}</p>
+                        <p class="preco" style="color: #28a745; font-weight: bold; margin: 5px 0 0 0; font-size: 1.1em;">R$ {{ item[2] }}</p>
                     </div>
                 </div>
+                <form method="post" action="/update/{{ item[0] }}">
+                    <div style="flex: 1; text-align: center;">
+                        <label style="font-size: 0.85em; color: #666; display: block; margin-bottom: 5px;">Quantidade:</label>
+                        <input type="number" value="{{ item[4] }}" min="1" style="width: 60px; padding: 6px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-size: 1em;" onchange="this.form.submit()" name="numero">
+                    </div>  
+                </form>
                 
-                <div style="flex: 1; text-align: center;">
-                    <label style="font-size: 0.85em; color: #666; display: block; margin-bottom: 5px;">Quantidade:</label>
-                    <input type="number" value="{{ item[4] }}" min="1" style="width: 60px; padding: 6px; text-align: center; border: 1px solid #ccc; border-radius: 4px; font-size: 1em;">
-                </div>
-
                 <div style="flex: 1; text-align: right;">
                     <button type="button" style="background: #dc3545; color: white; border: none; padding: 10px 16px; border-radius: 4px; cursor: pointer; font-size: 1em; font-weight: 500;" onclick="location.href='/delete/{{ item[0] }}'">
                         Remover Item
@@ -31,12 +38,11 @@
             </div>
             {% endfor %}
         </div>
-
+        <p class="preco" style="color: #28a745; font-weight: bold; font-size: 1.5em; text-align: right;">Total: R${{ total }}</p>
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px; flex-wrap: wrap; gap: 20px;">
             <a href="{{ url_for('produtos') }}" class="btn-voltar" style="font-size: 1.1em; text-decoration: none; padding: 12px 20px; border: 1px solid #ccc; border-radius: 5px; color: #333; background: #eee;">
                 ← Continuar Comprando
             </a>        
-
             <button type="button" style="background: #28a745; color: white; border: none; padding: 12px 30px; border-radius: 5px; font-size: 1.1em; font-weight: bold; cursor: pointer; box-shadow: 0 4px 6px rgba(40, 167, 69, 0.2);">
                 Concluir Compra ➔
             </button>

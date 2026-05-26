@@ -76,10 +76,38 @@ def updateItem(qtdItem, fk_produto):
     mysql.connection.commit()
     cursor.close()
 
-# Deleta um item na tabela item_cvarrinho
+# Deleta um item na tabela item_carrinho
 def deleteItemCarrinho(fk_produto):
     cursor = mysql.connection.cursor()
     sql = ("delete from item_carrinho where fk_produto = %s")
     cursor.execute(sql, (fk_produto,))
     mysql.connection.commit()
-    cursor.close() 
+    cursor.close()
+
+# DEMAIS FUNÇÕES
+
+def formatarValorUnitarioItem(itens):
+    listaFormatada = []
+    for item in itens:
+        valorFormatado = f"{item[2]:.2f}"
+        valorFormatado= valorFormatado.replace(".",",")
+        if item[2] >= 1000:
+            valorFormatado = valorFormatado[:1]+'.'+valorFormatado[1:]
+        listaFormatada.append([item[0], item[1], valorFormatado, item[3] ,item[4]])
+    return listaFormatada
+
+def formatarValorUnitarioProd(produtos):
+    listaFormatada = []
+    for produto in produtos:
+        valorFormatado = f"{produto[3]:.2f}"
+        valorFormatado = valorFormatado.replace(".",",")
+        if produto[3] >= 1000:
+            valorFormatado = valorFormatado[:1]+'.'+valorFormatado[1:]
+        listaFormatada.append([produto[0], produto[1], produto[2] ,valorFormatado, produto[4]])
+    return listaFormatada
+
+def formatarTotal(soma):
+    somaStr = f"{soma:.2f}"
+    somaStr=somaStr.replace(".",",")
+    somaTotal = somaStr[:1]+'.'+somaStr[1:]
+    return somaTotal
