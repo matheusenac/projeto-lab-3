@@ -21,9 +21,11 @@ def carrinho():
     listaItem = readItensCarrinho(id)
     soma = 0
     for item in listaItem:
+            print(item[2])
+            print(item[4])
             soma = soma + item[2]*item[4]
-            soma = formatarTotal(soma)
     listaFormatada = formatarValorUnitarioItem(listaItem)
+    print(soma)
     return render_template('carrinho.html', itens = listaFormatada, numero=num, total=soma)
 
 # Rota adicionar ao item carrinho

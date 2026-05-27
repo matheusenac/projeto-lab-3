@@ -12,13 +12,13 @@ create table produtos (
 
 create table carrinho (
 	id_carrinho int auto_increment primary key
-    
 );
 
 create table item_carrinho(
 	fk_carrinho int,
     fk_produto int,
     data_item date not null,
+    qtd_item int default 1,
     
     foreign key (fk_carrinho) references carrinho(id_carrinho),
     foreign key (fk_produto) references produtos(id_produto)
@@ -34,3 +34,5 @@ values
 ("Action Figure Luiz Espalha Lixo ", 100, 340.00, "static/uploads/Luiz Espalha Lixo.png");
 
 select * from produtos;
+select * from carrinho;
+select * from item_carrinho;
