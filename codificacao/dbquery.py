@@ -18,6 +18,14 @@ def readCarrinho():
     cursor.close()
     return resultado
 
+# delete carrinho
+def deleteCarrinho(id_carrinho):
+    cursor = mysql.connection.cursor()
+    sql = ("delete from carrinho where id_carrinho = %s")
+    cursor.execute(sql, (id_carrinho,))
+    mysql.connection.commit()
+    cursor.close()
+
 # TABELA PRODUTOS ####################################
 
 # Lê todos os produtos
@@ -36,6 +44,12 @@ def readUmProduto():
     resultado = cursor.fetchone()
     cursor.close()
     return resultado
+
+def updateProduto(qtdItem, idProduto):
+    cursor = mysql.connection.cursor()
+    cursor.execute("update produtos set qtd_estoque = %s where id_produto = %s",(qtdItem, idProduto))
+    mysql.connection.commit()
+    cursor.close()
 
 # TABELA ITEM_CARRINHO ####################################
 
@@ -69,7 +83,7 @@ def readItemCarrinho(idProduto):
     cursor.close()
     return resultado
 
-# Attualiza o item na tabela item_carrinho
+# Atualiza o item na tabela item_carrinho
 def updateItem(qtdItem, fk_produto):
     cursor = mysql.connection.cursor()
     cursor.execute("update item_carrinho set qtd_item = %s where fk_produto = %s",(qtdItem, fk_produto))

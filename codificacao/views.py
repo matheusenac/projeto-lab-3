@@ -57,3 +57,18 @@ def atualizarQuantidade(idProduto):
         else:
             deleteItemCarrinho(idProduto)
     return redirect("/carrinho")
+
+# Rota concluir compra
+@app.route("/concluircompra")
+def concluirCompra():
+    id = readCarrinho()[0]
+    listaCarrinho = readItensCarrinho(id)
+    listaProduto = readProdutos()
+    print(listaProduto)
+
+    for  produto in listaProduto:
+        for item in listaCarrinho:
+            qtd = produto[2] - item[4]
+            updateProduto(qtd, item[0])
+    
+    return render_template("concluircompra.html")
